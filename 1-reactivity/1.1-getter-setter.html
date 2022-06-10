@@ -1,0 +1,18 @@
+<script>
+  function convert(obj) {
+    for (var key in obj) {
+      let internalValue = obj[`${key}`]
+
+      Object.defineProperty(obj, key, {
+        get() {
+          console.log(`getting key "${key}": ${internalValue}`);
+          return internalValue;
+        },
+        set(val) {
+          internalValue = val
+          console.log(`setting key "${key}" to: ${val}`);
+        }
+      });
+    }
+  }
+</script>
